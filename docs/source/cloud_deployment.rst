@@ -52,9 +52,13 @@ Deployment Process
 -------------------
 
 1. Launch the one click stack and provide the requisite values.
+   1a. a VPC soley for MozDef usage
+   1b. 3 subnets in the MozDef VPC (each in a different avilability zone, and larger than /28)
+   1c. an Internet Gateway tied to the MozDef VPC
 2. Wait for the stack to complete.  You'll see several nested stacks in the Cloudformation console. *Note: This may take a while*
-3. Navigate to the URL you set up for MozDef.  It should redirect you to the single sign on provider.  If successful you'll see the MozDef UI.
-4. Try navigating to ElasticSearch https://your_base_url:9090
+3. After the CloudFormation stack is fully operational, add the ALB to Route 53 as a CName record. 
+4. Navigate to the URL you set up for MozDef.  It should redirect you to the single sign on provider.  If successful you'll see the MozDef UI.
+5. Try navigating to ElasticSearch https://your_base_url:9090
 You should see the following:
 ::
 
@@ -72,7 +76,7 @@ You should see the following:
       "tagline" : "You Know, for Search"
     }
 
-5. Test out Kibana at https://your_base_url:9090/_plugin/kibana/app/kibana#/discover?_g=()
+6. Test out Kibana at https://your_base_url:9090/_plugin/kibana/app/kibana#/discover?_g=()
 
 
 Using MozDef
